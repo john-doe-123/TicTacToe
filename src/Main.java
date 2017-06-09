@@ -12,7 +12,7 @@ public class Main {
         SelectedCell selectedCell;
 
 
-        printWelcomMessage();
+        printWelcomeMessage();
 
 
         for (int i = 0; i < Board.TOTAL_CELLS; i++) {
@@ -65,7 +65,7 @@ public class Main {
         return new SelectedCell(row, col);
     }
 
-    public static void bannerPrint(String message, int width) {
+    private static void bannerPrint(String message, int width) {
 
 
         int spaces = (width - message.length() - 2) / 2;
@@ -78,12 +78,12 @@ public class Main {
         System.out.println(repeatChar('#', width));
     }
 
-    public static String repeatChar(char c, int numberOfTimes) {
+    private static String repeatChar(char c, int numberOfTimes) {
         return new String(new char[numberOfTimes]).replace('\0', c);
     }
 
 
-    public static void printWelcomMessage() {
+    private static void printWelcomeMessage() {
 
         bannerPrint("welcome!", 40);
         System.out.println();
