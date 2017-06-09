@@ -40,21 +40,25 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        int row;
-        int col;
-        boolean isOutsideRange;
+        int row = 0;
+        int col = 0;
+        boolean isOutsideRange = true;
 
         do {
 
-            System.out.print("Row [1..3]: ");
-            row = Integer.parseInt(scanner.nextLine());
-            System.out.print("Column [1..3]: ");
-            col = Integer.parseInt(scanner.nextLine());
+            try {
+                System.out.print("Row [1..3]: ");
+                row = Integer.parseInt(scanner.nextLine());
+                System.out.print("Column [1..3]: ");
+                col = Integer.parseInt(scanner.nextLine());
 
-            isOutsideRange = (row < 1 || row > 3) || (col < 1 || col > 3);
+                isOutsideRange = (row < 1 || row > 3) || (col < 1 || col > 3);
 
-            row--;  // Subtract 1 because 1..3 is more user-friendly than 0..2;
-            col--;
+                row--;  // Subtract 1 because 1..3 is more user-friendly than 0..2;
+                col--;
+            } catch (NumberFormatException e) {
+                System.out.println("Numbers only please!");
+            }
 
         } while (isOutsideRange || !board.isValidMove(board, row, col));
 
