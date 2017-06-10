@@ -1,6 +1,7 @@
 public class SelectedCell {
 
-    int row, col;
+    final int row;
+    final int col;
 
 
     public SelectedCell(int row, int col) {
