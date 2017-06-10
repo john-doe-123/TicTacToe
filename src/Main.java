@@ -12,7 +12,7 @@ public class Main {
         SelectedCell selectedCell;
 
 
-        printWelcomeMessage();
+        HelperMethods.printWelcomeMessage();
 
 
         for (int i = 0; i < Board.TOTAL_CELLS; i++) {
@@ -31,7 +31,7 @@ public class Main {
 
         }
 
-        bannerPrint(board.getWinnerOrDraw(), 25);
+        HelperMethods.bannerPrint(board.getWinnerOrDraw(), 25);
 
     }
 
@@ -65,27 +65,4 @@ public class Main {
         return new SelectedCell(row, col);
     }
 
-    private static void bannerPrint(String message, int width) {
-
-
-        int spaces = (width - message.length() - 2) / 2;
-
-
-        System.out.println(repeatChar('#', width));
-        System.out.printf("%1$s%2$s%1$s%n",
-                repeatChar(' ', spaces),
-                message.toUpperCase());
-        System.out.println(repeatChar('#', width));
-    }
-
-    private static String repeatChar(char c, int numberOfTimes) {
-        return new String(new char[numberOfTimes]).replace('\0', c);
-    }
-
-
-    private static void printWelcomeMessage() {
-
-        bannerPrint("welcome!", 40);
-        System.out.println();
-    }
 }
