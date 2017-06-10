@@ -1,4 +1,4 @@
-public class Board {
+class Board {
 
     private static final int BOARD_ROWS = 3;
     private static final int BOARD_COLUMNS = 3;
@@ -9,7 +9,8 @@ public class Board {
     private char[][] cells = new char[BOARD_ROWS][BOARD_COLUMNS];
 
 
-    public Board() {
+
+    Board() {
 
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length; j++) {
@@ -19,15 +20,15 @@ public class Board {
 
     }
 
-    public void printBoard() {
+    void printBoard() {
 
         System.out.println();
 
         System.out.println("-------------");
 
-        for (int i = 0; i < this.cells.length; i++) {
-            for (int j = 0; j < this.cells[i].length; j++) {
-                System.out.printf("| %c ", this.cells[i][j]);
+        for (char[] cell : this.cells) {
+            for (char aCell : cell) {
+                System.out.printf("| %c ", aCell);
             }
             System.out.print("|");
             System.out.println();
@@ -38,16 +39,16 @@ public class Board {
         System.out.println();
     }
 
-    public void setPlayerSymbol(int row, int col, char playerSymbol) {
+    void setPlayerSymbol(int row, int col, char playerSymbol) {
 
         this.cells[row][col] = playerSymbol;
     }
 
-    public boolean isValidMove(Board board, int row, int col) {
+    boolean isValidMove(Board board, int row, int col) {
         return board.cells[row][col] == '-';
     }
 
-    public boolean isGameOver(Board board) {
+    boolean isGameOver(Board board) {
 
         boolean winHorizontals = false;
         boolean winVerticals = false;
@@ -86,7 +87,11 @@ public class Board {
 
     }
 
-    public String getWinnerOrDraw() {
+    /**
+     * @return Returns the winner, if none found returns "Draw"
+     *
+     */
+    String getWinnerOrDraw() {
         return this.winnerOrDraw;
     }
 }
