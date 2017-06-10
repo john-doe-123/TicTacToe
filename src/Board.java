@@ -6,7 +6,7 @@ class Board {
 
     private String winnerOrDraw = "Draw";
 
-    private char[][] cells = new char[BOARD_ROWS][BOARD_COLUMNS];
+    private final char[][] cells = new char[BOARD_ROWS][BOARD_COLUMNS];
 
 
 
