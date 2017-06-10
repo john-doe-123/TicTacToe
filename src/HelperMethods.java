@@ -13,7 +13,7 @@ public class HelperMethods {
         System.out.println(repeatChar('#', width));
     }
 
-    static String repeatChar(char c, int numberOfTimes) {
+    private static String repeatChar(char c, int numberOfTimes) {
         return new String(new char[numberOfTimes]).replace('\0', c);
     }
 
