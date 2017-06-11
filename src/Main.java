@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -9,7 +7,7 @@ public class Main {
 
         char playerSymbol;
         Board board = new Board();
-        SelectedCell selectedCell;
+        UserNumbers userNumbers;
 
 
         HelperMethods.printWelcomeMessage();
@@ -21,8 +19,8 @@ public class Main {
 
             System.out.printf("%c's move!%n", playerSymbol);
             System.out.println("---------");
-            selectedCell = getUserInput(board);
-            board.setPlayerSymbol(selectedCell.row, selectedCell.col, playerSymbol);
+            userNumbers = HelperMethods.makeMove(board);
+            board.setPlayerSymbol(userNumbers.row, userNumbers.col, playerSymbol);
             board.printBoard();
 
             if (board.isGameOver(board)) {
@@ -31,38 +29,9 @@ public class Main {
 
         }
 
-        HelperMethods.bannerPrint(board.getWinnerOrDraw(), 25);
+        HelperMethods.printBanner(board.getWinnerOrDraw(), 25);
 
     }
 
-
-    private static SelectedCell getUserInput(Board board) {
-
-        Scanner scanner = new Scanner(System.in);
-
-        int row = 0;
-        int col = 0;
-        boolean isOutsideRange = true;
-
-        do {
-
-            try {
-                System.out.print("Row [1..3]: ");
-                row = Integer.parseInt(scanner.nextLine());
-                System.out.print("Column [1..3]: ");
-                col = Integer.parseInt(scanner.nextLine());
-
-                isOutsideRange = (row < 1 || row > 3) || (col < 1 || col > 3);
-
-                row--;  // Subtract 1 because 1..3 is more user-friendly than 0..2;
-                col--;
-            } catch (NumberFormatException e) {
-                System.out.println("Numbers only please!");
-            }
-
-        } while (isOutsideRange || !board.isValidMove(board, row, col));
-
-        return new SelectedCell(row, col);
-    }
 
 }

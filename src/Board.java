@@ -44,8 +44,8 @@ class Board {
         this.cells[row][col] = playerSymbol;
     }
 
-    boolean isValidMove(Board board, int row, int col) {
-        return board.cells[row][col] == '-';
+    boolean isValidMove(Board board, UserNumbers userNumbers) {
+        return board.cells[userNumbers.row][userNumbers.col] == '-';
     }
 
     boolean isGameOver(Board board) {
